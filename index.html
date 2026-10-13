@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Early ResizeObserver benign warning suppression -->
+    <script>
+      (function() {
+        var isROError = function(msg) {
+          return typeof msg === 'string' && (
+            msg.indexOf('ResizeObserver loop completed with undelivered notifications') !== -1 ||
+            msg.indexOf('ResizeObserver loop limit exceeded') !== -1
+          );
+        };
+        window.addEventListener('error', function(e) {
+          if (isROError(e.message)) {
+            e.stopImmediatePropagation();
+            e.preventDefault();
+            return true;
+          }
+        }, true);
+        if (window.ResizeObserver) {
+          var OriginalRO = window.ResizeObserver;
+          window.ResizeObserver = function(callback) {
+            return new OriginalRO(function(entries, observer) {
+              window.requestAnimationFrame(function() {
+                try {
+                  callback(entries, observer);
+                } catch (err) {
+                  if (!err || !isROError(err.message)) {
+                    console.error(err);
+                  }
+                }
+              });
+            });
+          };
+          window.ResizeObserver.prototype = OriginalRO.prototype;
+        }
+      })();
+    </script>
+    <title>Gihan Lakshan | Prompt Engineer, Front-End Developer & Digital Creator</title>
+    <meta
+      name="description"
+      content="Explore the portfolio of Gihan Lakshan, a creative technologist focused on prompt engineering, AI-powered solutions, front-end development, UI/UX design, and innovative digital tools."
+    />
+    <meta name="keywords" content="Gihan Lakshan, Prompt Engineer, Front-End Developer, UI/UX Designer, AI Solutions, Creative Technologist, Sri Lanka, Web Developer Portfolio" />
+    <meta name="author" content="Gihan Lakshan" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#050509" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Gihan Lakshan | Prompt Engineer, Front-End Developer & Digital Creator" />
+    <meta
+      property="og:description"
+      content="Explore the portfolio of Gihan Lakshan, a creative technologist focused on prompt engineering, AI-powered solutions, front-end development, UI/UX design, and innovative digital tools."
+    />
+    <meta property="og:site_name" content="Gihan Lakshan Portfolio" />
+    <meta property="og:image" content="./assets/card-front.png" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gihan Lakshan | Prompt Engineer, Front-End Developer & Digital Creator" />
+    <meta
+      name="twitter:description"
+      content="Explore the portfolio of Gihan Lakshan, a creative technologist focused on prompt engineering, AI-powered solutions, front-end development, UI/UX design, and innovative digital tools."
+    />
+    <meta name="twitter:image" content="./assets/card-front.png" />
+
+    <!-- Favicon: GL Monogram -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050509'/%3E%3Crect x='1' y='1' width='30' height='30' rx='7' fill='none' stroke='%236c1de3' stroke-width='1.5' stroke-opacity='0.6'/%3E%3Ctext x='16' y='21' font-family='sans-serif' font-weight='900' font-size='13' fill='%2313d9d1' text-anchor='middle' letter-spacing='-0.5'%3EGL%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- Google Fonts: Plus Jakarta Sans, Outfit, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Gihan Lakshan",
+      "jobTitle": "Creative Technologist & AI Solutions Developer",
+      "description": "Prompt Engineer, Front-End Developer, UI/UX Designer, and Digital Solutions Creator.",
+      "email": "mailto:gihan6087@gmail.com",
+      "telephone": "+94705710042",
+      "sameAs": [
+        "https://www.linkedin.com/in/gihan-lakshan-linkin-9b49b7385",
+        "https://wa.me/94705710042",
+        "https://github.com/lakgija4-jpg"
+      ],
+      "knowsAbout": [
+        "Prompt Engineering",
+        "Artificial Intelligence",
+        "Front-End Web Development",
+        "React",
+        "TypeScript",
+        "UI/UX Design",
+        "Generative AI"
+      ]
+    }
+    </script>
+    <script type="module" crossorigin src="./assets/index-COP_WoFW.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CeY7b3td.css">
+  </head>
+  <body class="bg-[#050509] text-[#F8F5FF] antialiased selection:bg-[#6C1DE3] selection:text-white">
+    <div id="root"></div>
+  </body>
+</html>
